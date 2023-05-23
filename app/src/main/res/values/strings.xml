@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">HISPDD</string>
-    <string name="webclient_id">992185780121-8rkq73t2mf5hdurnjhldr5na0kmr8uat.apps.googleusercontent.com</string>
+    <string name="webclient_id">992185780121–8rkq73t2mf5hdurnjhldr5na0kmr8uat.apps.googleusercontent.com</string>
+    <string name="home">Home</string>
+    <string name="realtime">Realtime</string>
+    <string name="plant_detect">Plant Detect</string>
+    <string name="lux_meter">Lux Meter</string>
+    <string name="temperature_value">Temperature Value:</string>
+    <string name="humidity_value">Humidity Value:</string>
+    <string name="heat_index_value">Heat Index Value:</string>
+    <string name="ph_level">pH Level:</string>
+    <string name="turbidity_sensor">Turbidity Sensor:</string>
 </resources>
