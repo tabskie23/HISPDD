@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
+@Suppress("DEPRECATION")
 class MainPage : AppCompatActivity() {
 
 
@@ -17,6 +18,7 @@ class MainPage : AppCompatActivity() {
         val firstFragment = FirstFragment()
         val secondFragment = SecondFragment()
         val thirdFragment = ThirdFragment()
+        val forthFragment = ForthFragment()
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         setCurrentFragment(firstFragment)
@@ -26,6 +28,7 @@ class MainPage : AppCompatActivity() {
                 R.id.navigation_home -> setCurrentFragment(firstFragment)
                 R.id.navigation_rtc -> setCurrentFragment(secondFragment)
                 R.id.navigation_upload -> setCurrentFragment(thirdFragment)
+                R.id.navigation_lux -> setCurrentFragment(forthFragment)
             }
             true
         }

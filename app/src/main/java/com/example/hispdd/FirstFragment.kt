@@ -15,6 +15,7 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
     private lateinit var tvHumidity: TextView
     private lateinit var tvHeatIndex: TextView
     private lateinit var tvpHValue: TextView
+    private lateinit var tvTurbidity: TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,12 +24,14 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         tvHumidity = view.findViewById(R.id.tv_humidity)
         tvHeatIndex = view.findViewById(R.id.tv_heatIndex)
         tvpHValue = view.findViewById(R.id.tv_phValue)
+        tvTurbidity = view.findViewById(R.id.tv_turbidity)
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance("https://hispdd-8fc1d-default-rtdb.asia-southeast1.firebasedatabase.app")
         val temperatureRef: DatabaseReference = database.getReference("temperature")
         val humidityRef: DatabaseReference = database.getReference("humidity")
         val heatIndexRef: DatabaseReference = database.getReference("heatindex")
-        val pHvalueRef: DatabaseReference = database.getReference("phValue")
+        val pHvalueRef: DatabaseReference = database.getReference("pHValue")
+        val turbidityRef: DatabaseReference = database.getReference("ntu")
 
         val temperatureListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -86,9 +89,24 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
             }
         }
 
+        val turbidityListener = object: ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot){
+                val ntu = dataSnapshot.getValue(Float::class.java)
+                if(ntu != null) {
+                    Log.d(TAG, "pH Water level is:  $ntu")
+                    tvTurbidity.text = "$ntu"
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w(TAG, "onCancelled", databaseError.toException())
+            }
+        }
+
         temperatureRef.addValueEventListener(temperatureListener)
         humidityRef.addValueEventListener(humidityListener)
         heatIndexRef.addValueEventListener(heatIndexListener)
         pHvalueRef.addValueEventListener(phValueListener)
+        turbidityRef.addValueEventListener(turbidityListener)
     }
 }
