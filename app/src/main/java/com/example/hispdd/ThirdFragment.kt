@@ -1,37 +1,31 @@
 package com.example.hispdd
 
 import android.Manifest
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
-
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.media.ThumbnailUtils
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ScrollView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import com.example.hispdd.ml.Model
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
-import org.w3c.dom.Text
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import kotlin.math.min
 
+@Suppress("DEPRECATION")
 class ThirdFragment : Fragment(R.layout.fragment_third) {
 
     private lateinit var result: TextView
@@ -69,7 +63,6 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
                 classifiedTextView.visibility = View.VISIBLE
                 confidencesTextView.visibility = View.VISIBLE
 
-
             } else {
                 requestPermissions(
                     arrayOf(Manifest.permission.CAMERA),
@@ -79,6 +72,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         if (requestCode == CAMERA_PERMISSION_REQUEST_CODE &&
             grantResults.isNotEmpty() &&
@@ -90,6 +84,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun classifyImage(context: Context, image: Bitmap) {
         try {
             val model = Model.newInstance(context)
@@ -158,6 +153,7 @@ class ThirdFragment : Fragment(R.layout.fragment_third) {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 

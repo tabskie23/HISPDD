@@ -18,7 +18,7 @@ class MainPage : AppCompatActivity() {
         val firstFragment = FirstFragment()
         val secondFragment = SecondFragment()
         val thirdFragment = ThirdFragment()
-        val forthFragment = ForthFragment()
+        val fourthFragment = FourthFragment()
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         setCurrentFragment(firstFragment)
@@ -28,7 +28,7 @@ class MainPage : AppCompatActivity() {
                 R.id.navigation_home -> setCurrentFragment(firstFragment)
                 R.id.navigation_rtc -> setCurrentFragment(secondFragment)
                 R.id.navigation_upload -> setCurrentFragment(thirdFragment)
-                R.id.navigation_lux -> setCurrentFragment(forthFragment)
+                R.id.navigation_lux -> setCurrentFragment(fourthFragment)
             }
             true
         }

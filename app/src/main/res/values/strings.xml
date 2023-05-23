@@ -10,4 +10,5 @@
     <string name="heat_index_value">Heat Index Value:</string>
     <string name="ph_level">pH Level:</string>
     <string name="turbidity_sensor">Turbidity Sensor:</string>
+    <string name="light_level_0">Light level: 0</string>
 </resources>
